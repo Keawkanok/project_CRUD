@@ -1,0 +1,118 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Booking Form
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-text color="secondary">
+      <ion-label>Start Time</ion-label>
+    </ion-text>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Hour</ion-label>
+          <ion-select>
+            <ion-select-option value="08">08</ion-select-option>
+            <ion-select-option value="09">09</ion-select-option>
+            <ion-select-option value="10">10</ion-select-option>
+            <ion-select-option value="11">11</ion-select-option>
+            <ion-select-option value="12">12</ion-select-option>
+            <ion-select-option value="13">13</ion-select-option>
+            <ion-select-option value="14">14</ion-select-option>
+            <ion-select-option value="15">15</ion-select-option>
+            <ion-select-option value="16">16</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>Min</ion-label>
+          <ion-select>
+            <ion-select-option value="00">00</ion-select-option>
+            <ion-select-option value="30">30</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item>
+    <ion-text color="secondary">
+      <ion-label>End Time</ion-label>
+    </ion-text>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Hour</ion-label>
+          <ion-select>
+            <ion-select-option value="08">08</ion-select-option>
+            <ion-select-option value="09">09</ion-select-option>
+            <ion-select-option value="10">10</ion-select-option>
+            <ion-select-option value="11">11</ion-select-option>
+            <ion-select-option value="12">12</ion-select-option>
+            <ion-select-option value="13">13</ion-select-option>
+            <ion-select-option value="14">14</ion-select-option>
+            <ion-select-option value="15">15</ion-select-option>
+            <ion-select-option value="16">16</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-label>Min</ion-label>
+          <ion-select>
+            <ion-select-option value="00">00</ion-select-option>
+            <ion-select-option value="30">30</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item>
+    <ion-text color="secondary">
+      <ion-label>Choose Room</ion-label>
+    </ion-text>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let entry of form">
+      <ion-label>{{entry.val}}</ion-label>
+      <ion-label>({{entry.people}} People)</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-text color="secondary">
+      <ion-label>Event</ion-label>
+    </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Notes</ion-label>
+    <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
+  </ion-item>
+</ion-content>
