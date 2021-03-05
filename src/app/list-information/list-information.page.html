@@ -1,0 +1,90 @@
+<ion-content>
+
+  <ion-list class="container">
+    <form [formGroup]="studentForm" (ngSubmit)="CreateRecord()">
+
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>
+            Booking Form
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-item>
+        <ion-text color="secondary">
+          <ion-label>Start Time</ion-label>
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="D/M/YYYY" formControlName="date"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-text color="secondary">
+          <ion-label>Hour start</ion-label>
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Time</ion-label>
+        <ion-datetime displayFormat="hh:mm" formControlName="timeStart"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-text color="secondary">
+          <ion-label>Hour end</ion-label>
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Time</ion-label>
+        <ion-datetime displayFormat="hh:mm" formControlName="timeEnd"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-text color="secondary">
+          <ion-label>Choose a room</ion-label>
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Room</ion-label>
+        <ion-select formControlName="room">
+          <ion-select-option value="Room 1">Room 1</ion-select-option>
+          <ion-select-option value="Room 2">Room 2</ion-select-option>
+          <ion-select-option value="Room 3">Room 3</ion-select-option>
+          <ion-select-option value="Room 4">Room 4</ion-select-option>
+          <ion-select-option value="Room 5">Room 5</ion-select-option>
+          <ion-select-option value="Room 6">Room 6</ion-select-option>
+          <ion-select-option value="Room 7">Room 7</ion-select-option>
+          <ion-select-option value="Room 8">Room 8</ion-select-option>
+          <ion-select-option value="Room 9">Room 9</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-text color="secondary">
+          <ion-label>Event</ion-label>
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Notes: </ion-label>
+        <ion-textarea maxlength="40" rows="6" cols="20" placeholder="Enter any notes here..." formControlName="event">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item >
+        <ion-button slot="end" (click)="CreateRecord()" [disabled]="studentForm.invalid">
+          <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+          &nbsp;Create
+        </ion-button>
+        <ion-button [routerLink]="['/home']">Back</ion-button>
+      </ion-item>
+      
+    </form>
+  </ion-list>
+</ion-content>

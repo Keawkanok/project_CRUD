@@ -1,118 +1,171 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Booking Form
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-item>
-    <ion-text color="secondary">
-      <ion-label>Start Time</ion-label>
-    </ion-text>
-  </ion-item>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label>Date</ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  <ion-list class="container">
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title style="transform: translate(41px, 2px);">List Information</ion-title>
+        <ion-item slot="end">
+          <ion-button color="primary" value="add" [routerLink]="['/list-information']">Add</ion-button>
         </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      </ion-toolbar>
+    </ion-header>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Date</ion-label>
+            </ion-text>
+          </ion-item>
+
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Time</ion-label>
+            </ion-text>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Room</ion-label>
+            </ion-text>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Event</ion-label>
+            </ion-text>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-item *ngFor="let tmpobjs of tmpobj">
+      <ion-item-sliding *ngIf="!tmpobjs.isEdit; else elseBlock">
         <ion-item>
-          <ion-label>Hour</ion-label>
-          <ion-select>
-            <ion-select-option value="08">08</ion-select-option>
-            <ion-select-option value="09">09</ion-select-option>
-            <ion-select-option value="10">10</ion-select-option>
-            <ion-select-option value="11">11</ion-select-option>
-            <ion-select-option value="12">12</ion-select-option>
-            <ion-select-option value="13">13</ion-select-option>
-            <ion-select-option value="14">14</ion-select-option>
-            <ion-select-option value="15">15</ion-select-option>
-            <ion-select-option value="16">16</ion-select-option>
-          </ion-select>
+          <ion-label class="Date">{{ tmpobjs.mydate | date:'dd-MM-YYYY' }}</ion-label>
+          <!-- <ion-label class="Time">{{ tmpobjs.mytimeStart | date:'hh:mm' }}</ion-label> -->
+          <ion-label class="Time">{{ tmpobjs.mytimeStart }} - {{ tmpobjs.mytimeEnd }}</ion-label>
+          <ion-label class="Room">{{ tmpobjs.myroom }}</ion-label>
+          <ion-label class="Event">{{ tmpobjs.myevent }}</ion-label>
         </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label>Min</ion-label>
-          <ion-select>
-            <ion-select-option value="00">00</ion-select-option>
-            <ion-select-option value="30">30</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-  <ion-item>
-    <ion-text color="secondary">
-      <ion-label>End Time</ion-label>
-    </ion-text>
-  </ion-item>
+        <ion-item-options side="end">
+          <ion-item>
+            <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(tmpobjs)">
+              <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+            </ion-button>
+            <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(tmpobjs)">
+              <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-item-options>
+      </ion-item-sliding>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label>Hour</ion-label>
-          <ion-select>
-            <ion-select-option value="08">08</ion-select-option>
-            <ion-select-option value="09">09</ion-select-option>
-            <ion-select-option value="10">10</ion-select-option>
-            <ion-select-option value="11">11</ion-select-option>
-            <ion-select-option value="12">12</ion-select-option>
-            <ion-select-option value="13">13</ion-select-option>
-            <ion-select-option value="14">14</ion-select-option>
-            <ion-select-option value="15">15</ion-select-option>
-            <ion-select-option value="16">16</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
+      <ng-template #elseBlock>
 
-      <ion-col>
-        <ion-item>
-          <ion-label>Min</ion-label>
-          <ion-select>
-            <ion-select-option value="00">00</ion-select-option>
-            <ion-select-option value="30">30</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
-  <ion-item>
-    <ion-text color="secondary">
-      <ion-label>Choose Room</ion-label>
-    </ion-text>
-  </ion-item>
+        <ion-card-content>
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Start Time</ion-label>
+            </ion-text>
+          </ion-item>
 
-  <ion-list>
-    <ion-item *ngFor="let entry of form">
-      <ion-label>{{entry.val}}</ion-label>
-      <ion-label>({{entry.people}} People)</ion-label>
-      <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+          <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-datetime displayFormat="D/M/YYYY" [(ngModel)]="tmpobjs.EditDate"></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Hour start</ion-label>
+            </ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Time</ion-label>
+            <ion-datetime displayFormat="hh:mm" [(ngModel)]="tmpobjs.EdittimeStart"></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Hour end</ion-label>
+            </ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Time</ion-label>
+            <ion-datetime displayFormat="hh:mm" [(ngModel)]="tmpobjs.EdittimeEnd"></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Choose a room</ion-label>
+            </ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Room</ion-label>
+            <ion-select [(ngModel)]="tmpobjs.Editroom">
+              <ion-select-option value="Room 1">Room 1</ion-select-option>
+              <ion-select-option value="Room 2">Room 2</ion-select-option>
+              <ion-select-option value="Room 3">Room 3</ion-select-option>
+              <ion-select-option value="Room 4">Room 4</ion-select-option>
+              <ion-select-option value="Room 5">Room 5</ion-select-option>
+              <ion-select-option value="Room 6">Room 6</ion-select-option>
+              <ion-select-option value="Room 7">Room 7</ion-select-option>
+              <ion-select-option value="Room 8">Room 8</ion-select-option>
+              <ion-select-option value="Room 9">Room 9</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-text color="secondary">
+              <ion-label>Event</ion-label>
+            </ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Notes: </ion-label>
+            <ion-textarea [(ngModel)]="tmpobjs.Editevent" maxlength="40" rows="6" cols="20" placeholder="Enter any notes here...">
+            </ion-textarea>
+          </ion-item>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-button fill="solid" color="medium" size="small" (click)="tmpobjs.isEdit = false">
+                      Cancel
+                    </ion-button>
+                  </ion-col>
+                  <ion-col>
+                    <ion-button fill="solid" color="success" size="small" (click)="UpdateRecord(tmpobjs)">
+                      Update
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-title>
+          </ion-card-header>
+  
+        </ion-card-content>
+
+      
+      </ng-template>
+
+
     </ion-item>
   </ion-list>
-
-  <ion-item>
-    <ion-text color="secondary">
-      <ion-label>Event</ion-label>
-    </ion-text>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Notes</ion-label>
-    <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
-  </ion-item>
 </ion-content>

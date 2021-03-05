@@ -1,30 +1,43 @@
-#container {
+.container {
   text-align: center;
-  border: 3px solid #73AD21;
+  // border: 3px solid #73AD21;
   margin: auto;
-  width: 50%;
-  float: right;
-  position: absolute;
-  left: 0;
-  right: 0;
+  // width: 48%;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  // transform: translate(25%, -50%);
+  // transform: translate(150%, -98%);
 }
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.Date {
+  // border: 3px solid #73AD21;
+  transform: translate(0%, 12%);
 }
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.Time {
+  // border: 3px solid #73AD21;
+  transform: translate(4%, 12%);
 }
-
-#container a {
-  text-decoration: none;
+.Room {
+  // border: 3px solid #73AD21;
+  transform: translate(8%, 12%);
 }
+.Event {
+  // border: 3px solid #73AD21;
+  transform: translate(12%, 12%);
+}
+// #container strong {
+//   font-size: 20px;
+//   line-height: 26px;
+// }
+
+// #container p {
+//   font-size: 16px;
+//   line-height: 22px;
+
+//   color: #8c8c8c;
+
+//   margin: 0;
+// }
+
+// #container a {
+//   text-decoration: none;
+// }
