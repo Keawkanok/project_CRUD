@@ -15,6 +15,7 @@
       <ion-row>
         <ion-col>
 
+
           <ion-item>
             <ion-text color="secondary">
               <ion-label>Date</ion-label>
