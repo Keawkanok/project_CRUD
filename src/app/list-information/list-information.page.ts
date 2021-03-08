@@ -54,21 +54,7 @@ export class ListInformationPage implements OnInit {
         console.log(error);
       });
   }
-  EditRecord(record) {
-    record.isEdit = true;
-    record.EditDate = record.date;
-    record.EditAge = record.Age;
-    record.EditAddress = record.Address;
-  }
-
-  UpdateRecord(recordRow) {
-    let record = {};
-    record['date'] = recordRow.EditDate;
-    // record['Age'] = recordRow.EditAge;
-    // record['Address'] = recordRow.EditAddress;
-    this.getcrud.updateData(recordRow.id, record);
-    recordRow.isEdit = false;
-  }
+  
   Back(){
     this.navCtrl.pop();
   }

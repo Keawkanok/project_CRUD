@@ -9,12 +9,11 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
   tmpobj: any;
-  todayDate : Date = new Date();
+  todayDate: Date = new Date();
   constructor(
     private getcrud: CrudapiService,
     public alertCtrl: AlertController
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.getcrud.readData().subscribe((data) => {
@@ -56,5 +55,8 @@ export class HomePage {
     this.getcrud.updateData(recordRow.id, record);
     recordRow.isEdit = false;
     console.log(record['timeStart']);
+  }
+  refresh(): void {
+    window.location.reload();
   }
 }
